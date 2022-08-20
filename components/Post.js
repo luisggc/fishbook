@@ -1,12 +1,5 @@
 import Image from "next/image";
-import {
-  ChatAltIcon,
-  ChevronDownIcon,
-  ShareIcon,
-  ShoppingBagIcon,
-  ThumbUpIcon,
-  UserGroupIcon,
-} from "@heroicons/react/outline";
+import { ChatAltIcon, ShareIcon, ThumbUpIcon } from "@heroicons/react/outline";
 
 export default function Post({ name, message, postImage, image, timestamp }) {
   return (
@@ -23,7 +16,7 @@ export default function Post({ name, message, postImage, image, timestamp }) {
       </div>
       {postImage && (
         <div className="relative h-56 md:h-96 bg-white">
-          <Image src={postImage} width={400} height={400} layout="fill" objectFit="cover" />
+          <Image src={postImage} layout="fill" objectFit="cover" />
         </div>
       )}
       <div className="flex justify-between items-center rounded-b-2xl bg-white shadow-md text-gray-400 border-t">

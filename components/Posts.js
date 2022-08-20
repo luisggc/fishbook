@@ -7,12 +7,9 @@ export default function Posts() {
   const postsRef = collection(db, "posts");
   const q = query(postsRef, orderBy("timestamp"), limit(3));
   const [realTimePosts, loading, error] = useCollection(q);
-  console.log(realTimePosts?.docs);
-
   return (
     <div>
       {realTimePosts?.docs?.map((doc) => {
-        console.log(doc.data());
         return <Post key={doc.id} {...doc.data()} />;
       })}
     </div>

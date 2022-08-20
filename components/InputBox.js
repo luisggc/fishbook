@@ -16,7 +16,6 @@ export default function InputBox() {
 
   const sendPost = (e) => {
     e.preventDefault();
-    console.log("send post");
     const inputMessage = inputRef.current.value;
     if (!inputMessage) return;
     if (imageToPost) removeImage();
@@ -37,7 +36,6 @@ export default function InputBox() {
         null,
         (error) => console.error(error),
         () => {
-          console.log("completed");
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             updateDoc(postDoc, {
               postImage: downloadURL,
@@ -57,7 +55,6 @@ export default function InputBox() {
   };
 
   const removeImage = () => {
-    console.log("remove image");
     setImageToPost(null);
   };
 

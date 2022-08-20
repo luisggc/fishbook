@@ -3,14 +3,21 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import Post from "./Post";
 
-export default function Posts() {
+export default function Posts({ posts }) {
   const postsRef = collection(db, "posts");
   const q = query(postsRef, orderBy("timestamp"), limit(3));
   const [realTimePosts, loading, error] = useCollection(q);
+  const realTimePostsFormated = realTimePosts?.docs?.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  const renderedPost = realTimePosts ? realTimePostsFormated : posts;
+
   return (
     <div>
-      {realTimePosts?.docs?.map((doc) => {
-        return <Post key={doc.id} {...doc.data()} />;
+      {renderedPost?.map((post) => {
+        return <Post key={post.id} {...post} />;
       })}
     </div>
   );

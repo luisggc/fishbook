@@ -10,7 +10,15 @@ export default function Post({ name, message, postImage, image, timestamp }) {
         </div>
         <div>
           <p className="font-medium">{name}</p>
-          <p className="text-cs text-gray-400">{new Date(timestamp?.toDate()).toLocaleString()}</p>
+          {timestamp ? (
+            <p className="text-xs text-gray-400">
+              {new Date(timestamp?.toDate()).toLocaleString()}
+            </p>
+          ) : (
+            <p className="text-xs text-gray-400">
+              Loading
+            </p>
+          )}
         </div>
         <p className="pt-4">{message}</p>
       </div>

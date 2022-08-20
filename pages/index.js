@@ -19,8 +19,7 @@ export default function Home(props) {
       <main className="flex">
         <Sidebar />
         <Feed />
-        {/* <
-      
+        {/*     
       <Widgets /> */}
       </main>
     </div>

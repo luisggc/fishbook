@@ -9,5 +9,6 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
-  secret: process.env.NEXT_PUBLIC_SECRET
+  secret: process.env.NEXT_PUBLIC_SECRET,
+  site: process.env.NEXT_PUBLIC_SITE ?? 'http://localhost:3000',
 })

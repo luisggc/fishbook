@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
   const session = await getSession(context);
 
   const postsRef = collection(db, "posts");
-  const postQuery = query(postsRef, orderBy("timestamp"), limit(10));
+  const postQuery = query(postsRef, orderBy("timestamp", "desc"), limit(10));
   const postDocs = await getDocs(postQuery);
   const posts = postDocs.docs.map((doc) => ({
     id: doc.id,
